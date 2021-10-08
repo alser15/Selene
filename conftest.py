@@ -1,6 +1,6 @@
 from BasePage.LoginPage import LoginPage
 import allure
-from selenium import webdriver
+from selene.api import *
 import pytest
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
@@ -19,10 +19,10 @@ def initWebDriver():
     """ Инициализация драйвера """
     options = Options()
     options.add_argument("--window-size=1920,1080")
-    driver = webdriver.Chrome(chrome_options=options)
-    driver.get(Tools().url)
-    yield driver
-    driver.quit()
+    browser.open_url(Tools().url)
+    #browser.get(Tools().url)
+    yield browser
+    browser.quit()
 
 
 @pytest.fixture(scope='function')
