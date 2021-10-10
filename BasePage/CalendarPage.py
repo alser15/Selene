@@ -39,7 +39,6 @@ class CalendarPage(BasePage):
     def check_work_day_green_color(self):
         """ Проверка есть ли рабочий день в текущем месяце """
         try:
-            time.sleep(5)
             self.work_day()
         except NoSuchElementException:
             return True
