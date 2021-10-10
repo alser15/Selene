@@ -18,7 +18,7 @@ class Tools(metaclass=ToolsBaseClass):
     def __init__(self):
         """Конструктор класса"""
         self.config = configparser.ConfigParser()
-        self.config.read(r"C:\Users\Саня\Desktop\selenium_test\test_OOP\test\LK\Tools\settings.ini", encoding='utf-8')
+        self.config.read(r"C:\Users\alser15\PycharmProjects\Selene\Tools\settings.ini", encoding='utf-8')
         self.__url = self.config.get("URL", "current_url")
         self.__user_login = self.config.get("USER", "user_login")
         self.__user_password = self.config.get("USER", "user_pasword")

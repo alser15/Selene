@@ -10,9 +10,8 @@ from selenium.webdriver.common.by import By
 from Tools.Tools import Tools
 import os
 import requests
-import logging
-logging.basicConfig(level="DEBUG")
-logger = logging.getLogger()
+import time
+
 
 @pytest.fixture(scope='function')
 def initWebDriver():
@@ -29,15 +28,12 @@ def initWebDriver():
 def auth(initWebDriver):
     """ Инициализация входа на ресурс, в раздел графики """
     login = LoginPage(initWebDriver)
-    driver = initWebDriver
     login.add_login(Tools().login)
     login.add_password(Tools().password)
     login.click_button()
-    element_to_hover_over = driver.find_element_by_xpath("//i[@class='m-menu__link-icon flaticon-calendar-2']")
-    hover = ActionChains(driver).move_to_element(element_to_hover_over)
-    hover.perform()
-    driver.find_element_by_xpath("//span[text()='Графики работы']").click()
-    WebDriverWait(driver, 10).until(EC.invisibility_of_element((By.ID, "schedule-overlay")))
+    s("i.flaticon-calendar-2:nth-child(2)").click()
+    s('li.m-menu__item--submenu:nth-child(4) > div:nth-child(2) > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1) > span:nth-child(2)').should(be.clickable).click()
+    s("span.btn").should(be.hidden)
     yield initWebDriver
 
 

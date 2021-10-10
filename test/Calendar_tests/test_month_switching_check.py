@@ -1,8 +1,8 @@
 from BasePage.CalendarPage import CalendarPage
 
 
-def test_month_switching_check(test_log):
-    test_two = CalendarPage(test_log)
+def test_month_switching_check(auth):
+    test_two = CalendarPage(auth)
     test_two.click_month()
     test_two.select_next_month()
     test_two.try_on()

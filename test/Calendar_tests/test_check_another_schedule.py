@@ -1,8 +1,8 @@
 from BasePage.CalendarPage import CalendarPage
 
 
-def test_check_another_schedule(test_log):
-    test_three = CalendarPage(test_log)
+def test_check_another_schedule(auth):
+    test_three = CalendarPage(auth)
     test_three.click_input_user()
     test_three.enter_name_new_user('Агафонова Инна')
     test_three.ckick_new_user()
